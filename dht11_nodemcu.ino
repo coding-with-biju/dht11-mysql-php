@@ -10,7 +10,7 @@ const char* ssid = "839";
 const char* password = "8399009050";
 
 // Server address
-const char* server = "http://localhost:3000";  // Replace with your Node.js server IP
+const char* server = "192.168.214.190";  // Replace with your Node.js server IP
 const int port = 3000;
 
 void setup() {
@@ -33,10 +33,14 @@ void loop() {
     if (isnan(temp) || isnan(hum)) {
         Serial.println("Failed to read from DHT sensor!");
         return;
+    }else{
+        Serial.println(temp);
+        Serial.println(hum);
     }
 
     // Prepare data
     String postData = "temperature=" + String(temp) + "&humidity=" + String(hum);
+    Serial.println(postData);
 
     // Send data to server
     WiFiClient client;
